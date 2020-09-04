@@ -16,7 +16,7 @@ class RadialMaskedImageView: UIImageView {
 
         self.alpha =  1.0
 
-        let stepDuration = 0.15
+        let stepDuration = 0.2
 
 
         let startingColors  = doShow ?
@@ -62,7 +62,7 @@ class RadialMaskedImageView: UIImageView {
         secondStep.fillMode = .forwards
         secondStep.fromValue = middleColors
         secondStep.toValue = endingColors
-        secondStep.beginTime = stepDuration * 1
+        secondStep.beginTime = stepDuration
         secondStep.duration = stepDuration
 
         //In the completion block, remove all animations and re-enable the animate button.
