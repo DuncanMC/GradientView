@@ -18,7 +18,10 @@ class ViewController: UIViewController {
 
     @IBAction func handleShowImageSwitch(_ sender: UISwitch) {
         let value = sender.isOn
-        maskedView.show(doShow: value)
+        sender.isEnabled = false
+        maskedView.show(doShow: value) { _ in
+            sender.isEnabled = true
+        }
     }
 
 }

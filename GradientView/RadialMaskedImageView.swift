@@ -9,70 +9,56 @@
 import UIKit
 
 class RadialMaskedImageView: UIImageView {
+    public var totalDuration: Double = 2
+    public var blurPercent: Double = 0.5
+    public var midStepDelay: Double = 0
 
-    let maskLayer = CAGradientLayer()
+    private var completion: AnimationCompletion?
+    private let maskLayer = CAGradientLayer()
 
-    public func show(doShow: Bool) {
+    public func show(doShow: Bool, completion: AnimationCompletion? = nil) {
 
+        self.completion = completion
         self.alpha =  1.0
 
-        let stepDuration = 0.2
 
-
-        let startingColors  = doShow ?
-            [
-            UIColor.clear.cgColor,
-            UIColor.clear.cgColor,
-        ] : [
-            UIColor.black.cgColor,
-            UIColor.black.cgColor,
-        ]
-
-        let middleColors = [
-            UIColor.black.cgColor,
-            UIColor.clear.cgColor,
-        ]
-        let endingColors = doShow ?
-                [
-                UIColor.black.cgColor,
-                UIColor.black.cgColor,
-            ] :
-                [
-                UIColor.clear.cgColor,
-                UIColor.clear.cgColor,
-            ]
-
-        //Create another animation group to animate both image layers back to their starting position
         let group = CAAnimationGroup()
-        group.duration = stepDuration * 2
+        group.duration = totalDuration + midStepDelay
 
-        //Have the return animation begin after a short pause
-        //            group.beginTime = CACurrentMediaTime() + 0.2
 
-        //Animate the right foot back to its original position
-        let firstStep = CABasicAnimation(keyPath: "colors")
+
+
+        let firstStep = CABasicAnimation(keyPath: "locations")
+        let firstStepStartingValue: [Double] = doShow ? [0, 0, 0] : [1, 1, 1.0 + blurPercent]
+        let firstStepEndingValue: [Double] = [0, 0, blurPercent]
+
         firstStep.fillMode = .forwards
-        firstStep.fromValue = startingColors
-        firstStep.toValue = middleColors
-        firstStep.duration = stepDuration
+        firstStep.fromValue = firstStepStartingValue
+        firstStep.toValue = firstStepEndingValue
+        let firstStepPercent = doShow ? blurPercent : 1.0 - blurPercent
+        firstStep.duration = totalDuration * firstStepPercent
+
         group.animations = [firstStep]
 
-        //Animate the left foot back to its original position at the same time
-        let secondStep = CABasicAnimation(keyPath: "colors")
-        secondStep.fillMode = .forwards
-        secondStep.fromValue = middleColors
-        secondStep.toValue = endingColors
-        secondStep.beginTime = stepDuration
-        secondStep.duration = stepDuration
+        let secondStep = CABasicAnimation(keyPath: "locations")
+        let secondStepStartingValue: [Double] =  [0, 0, blurPercent]
 
+        let secondStepEndingValue: [Double] = doShow ? [1, 1, 1.0 + blurPercent] : [0, 0, 0]
+
+        secondStep.fillMode = .forwards
+        secondStep.fromValue = secondStepStartingValue
+        secondStep.toValue = secondStepEndingValue
+        let secondStepPercent = doShow ? 1.0 - blurPercent : blurPercent
+        secondStep.duration = totalDuration * secondStepPercent
+        secondStep.beginTime = firstStep.duration + midStepDelay
         //In the completion block, remove all animations and re-enable the animate button.
         let animationCompletion: AnimationCompletion = { finished in
             guard finished else { return }
             self.alpha = doShow ? 1.0 : 0.0
             self.layer.removeAllAnimations()
+            completion?(finished)
         }
 
-        firstStep.delegate = self
 
         group.animations?.append(secondStep)
         group.delegate = self
@@ -87,12 +73,14 @@ class RadialMaskedImageView: UIImageView {
             maskLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
             maskLayer.endPoint = CGPoint(x: 1.2, y: 1.2)
             maskLayer.type = .radial
+
             //Opaque mask shows the image.
             maskLayer.colors = [
                 UIColor.black.cgColor,
                 UIColor.black.cgColor,
+            UIColor.clear.cgColor,
             ]
-            maskLayer.locations = [0,1]
+            maskLayer.locations = [0, 1, 1]
 //            self.layer.addSublayer(maskLayer)
             self.layer.mask = maskLayer
 
