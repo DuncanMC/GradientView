@@ -16,18 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scampers" translatesAutoresizingMaskIntoConstraints="NO" id="gZr-VO-rvd" customClass="RadialMaskedImageView" customModule="GradientView" customModuleProvider="target">
-                                <rect key="frame" x="57" y="64" width="300" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-v7-pHV">
+                                <rect key="frame" x="52" y="64" width="310" height="310"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scampers" translatesAutoresizingMaskIntoConstraints="NO" id="gZr-VO-rvd" customClass="RadialMaskedImageView" customModule="GradientView" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="D9t-rR-aMZ"/>
+                                            <constraint firstAttribute="height" constant="300" id="Iib-6V-YJW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="D9t-rR-aMZ"/>
-                                    <constraint firstAttribute="height" constant="300" id="Iib-6V-YJW"/>
+                                    <constraint firstAttribute="width" constant="310" id="2D7-Al-hwv"/>
+                                    <constraint firstItem="gZr-VO-rvd" firstAttribute="centerX" secondItem="dEp-v7-pHV" secondAttribute="centerX" id="Dqf-48-xX2"/>
+                                    <constraint firstItem="gZr-VO-rvd" firstAttribute="centerY" secondItem="dEp-v7-pHV" secondAttribute="centerY" id="Exc-Ji-BqV"/>
+                                    <constraint firstAttribute="height" constant="310" id="UGT-m7-8Z3"/>
+                                    <constraint firstItem="gZr-VO-rvd" firstAttribute="centerX" secondItem="dEp-v7-pHV" secondAttribute="centerX" id="YW6-vl-H14"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </imageView>
+                            </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWB-Xu-GRC">
                                 <rect key="frame" x="153" y="811" width="51" height="31"/>
                                 <connections>
@@ -104,14 +122,13 @@
                             <constraint firstItem="pBC-qa-b97" firstAttribute="centerY" secondItem="yAF-Fm-qmV" secondAttribute="centerY" id="629-0N-ndp"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="trailing" secondItem="pBC-qa-b97" secondAttribute="trailing" id="8Qh-h1-C4g"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="top" secondItem="c0u-ET-Ws7" secondAttribute="bottom" constant="20" id="C1O-a5-YFC"/>
-                            <constraint firstItem="gZr-VO-rvd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="CQn-dZ-dCT"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="leading" id="F2L-CE-WfN"/>
                             <constraint firstItem="zea-ip-5KN" firstAttribute="leading" secondItem="yAF-Fm-qmV" secondAttribute="leading" id="F6O-cf-8GF"/>
-                            <constraint firstItem="gZr-VO-rvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GUW-sE-44m"/>
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="leading" id="Igo-ai-lOc"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="top" secondItem="pBC-qa-b97" secondAttribute="bottom" constant="20" id="KO6-Zj-4FQ"/>
                             <constraint firstItem="ddM-WB-IH8" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="trailing" constant="10" id="NeT-Nv-2au"/>
                             <constraint firstItem="PJg-k0-Uad" firstAttribute="centerY" secondItem="BWB-Xu-GRC" secondAttribute="centerY" id="P6v-mA-bmk"/>
+                            <constraint firstItem="dEp-v7-pHV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QXN-ZN-rSY"/>
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="leading" secondItem="xRR-p9-8vQ" secondAttribute="leading" id="Qc5-PB-qqd"/>
                             <constraint firstItem="Dbo-EJ-5en" firstAttribute="leading" secondItem="ddM-WB-IH8" secondAttribute="leading" id="RLz-Zn-PxZ"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="leading" secondItem="c0u-ET-Ws7" secondAttribute="leading" id="UHn-rs-sCc"/>
@@ -127,6 +144,7 @@
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="centerY" secondItem="Rff-Sf-vg2" secondAttribute="centerY" id="krm-3q-7d9"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="leading" id="oZp-W1-ehc"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="centerY" secondItem="zea-ip-5KN" secondAttribute="centerY" id="qau-Zy-t0r"/>
+                            <constraint firstItem="dEp-v7-pHV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="vc5-8e-NcQ"/>
                             <constraint firstItem="Dbo-EJ-5en" firstAttribute="centerY" secondItem="c0u-ET-Ws7" secondAttribute="centerY" id="xjQ-Px-sqV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
