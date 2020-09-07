@@ -39,6 +39,9 @@ class RadialMaskedImageView: UIImageView {
         firstStep.duration = totalDuration * firstStepPercent
 
         group.animations = [firstStep]
+        group.isRemovedOnCompletion = false
+        group.fillMode = .forwards
+
 
         let secondStep = CABasicAnimation(keyPath: "locations")
         let secondStepStartingValue: [Double] =  [0, 0, blurPercent]
@@ -55,14 +58,16 @@ class RadialMaskedImageView: UIImageView {
         let animationCompletion: AnimationCompletion = { finished in
             guard finished else { return }
             self.alpha = doShow ? 1.0 : 0.0
-            self.layer.removeAllAnimations()
-            completion?(finished)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                self.layer.removeAllAnimations()
+                completion?(finished)
+            }
         }
 
 
         group.animations?.append(secondStep)
         group.delegate = self
-        group.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+//        group.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
 
         //Attach a completion block to the group animation
         group.setValue(animationCompletion, forKey: animationCompletionKey)

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AE89371725014C4000EBE758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89371625014C4000EBE758 /* AppDelegate.swift */; };
-		AE89371925014C4000EBE758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89371825014C4000EBE758 /* SceneDelegate.swift */; };
 		AE89371B25014C4000EBE758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89371A25014C4000EBE758 /* ViewController.swift */; };
 		AE89371E25014C4000EBE758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE89371C25014C4000EBE758 /* Main.storyboard */; };
 		AE89372025014C4200EBE758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE89371F25014C4200EBE758 /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		AE89371325014C4000EBE758 /* GradientView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE89371625014C4000EBE758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE89371825014C4000EBE758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AE89371A25014C4000EBE758 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE89371D25014C4000EBE758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE89371F25014C4200EBE758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 				AE89372A25014C6300EBE758 /* GradientView.swift */,
 				AE89372E250175DA00EBE758 /* UIViewController+CAAnimationDelegate.swift */,
 				AE89372C25015C4D00EBE758 /* RadialMaskedImageView.swift */,
-				AE89371825014C4000EBE758 /* SceneDelegate.swift */,
 				AE89371A25014C4000EBE758 /* ViewController.swift */,
 				AE89371C25014C4000EBE758 /* Main.storyboard */,
 				AE89371F25014C4200EBE758 /* Assets.xcassets */,
@@ -151,7 +148,6 @@
 				AE89371725014C4000EBE758 /* AppDelegate.swift in Sources */,
 				AE89372F250175DA00EBE758 /* UIViewController+CAAnimationDelegate.swift in Sources */,
 				AE89372B25014C6300EBE758 /* GradientView.swift in Sources */,
-				AE89371925014C4000EBE758 /* SceneDelegate.swift in Sources */,
 				AE89372D25015C4D00EBE758 /* RadialMaskedImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VBNQV8KG4G;
 				INFOPLIST_FILE = GradientView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VBNQV8KG4G;
 				INFOPLIST_FILE = GradientView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

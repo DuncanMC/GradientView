@@ -92,8 +92,8 @@ class ViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if let targetTextField = targetTextField,
                 self.view.frame.origin.y == 0  {
-                let shiftAmount = 5 + targetTextField.frame.origin.y + targetTextField.frame.height
-                    - (view.bounds.height - keyboardSize.height)
+                var shiftAmount = view.safeAreaInsets.bottom + 5 + targetTextField.frame.origin.y + targetTextField.frame.height
+                shiftAmount -= (view.bounds.height - keyboardSize.height)
                 if shiftAmount > 0 {
                     self.view.frame.origin.y -= shiftAmount
                     
