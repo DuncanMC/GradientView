@@ -9,8 +9,8 @@
 import UIKit
 
 class RadialMaskedImageView: UIImageView {
-    public var totalDuration: Double = .25
-    public var blurPercent: Double = 0.2
+    public var totalDuration: Double = 2.0
+    public var blurPercent: Double = 0.1
     public var midStepDelay: Double = 0
 
     private var completion: AnimationCompletion?
