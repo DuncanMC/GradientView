@@ -16,7 +16,7 @@ class RadialMaskedImageView: UIImageView {
     private var completion: AnimationCompletion?
     private let maskLayer = CAGradientLayer()
 
-    public func show(doShow: Bool, completion: AnimationCompletion? = nil) {
+    public func show(_ doShow: Bool, completion: AnimationCompletion? = nil) {
 
         self.completion = completion
         self.alpha =  1.0

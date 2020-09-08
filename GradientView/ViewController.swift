@@ -8,12 +8,37 @@
 
 import UIKit
 
+enum AnimationTypes: Int {
+    case radialAnimation
+    case shadowAnimation
+}
+
 class ViewController: UIViewController {
 
-    let durationDefaultValue = 0.25
-    let blurPercentDefaultValue = 0.2
-    @IBOutlet weak var maskedView: RadialMaskedImageView!
 
+    var animationType: AnimationTypes = .radialAnimation {
+        didSet {
+            switch animationType {
+            case .radialAnimation:
+                maskedView.isHidden = false
+                shadowMaskedImageView.isHidden = true
+                stepDelaySwitch.isEnabled = true
+                blurSliderLabel.text = "Blur %"
+            case .shadowAnimation:
+                stepDelaySwitch.isEnabled = false
+                maskedView.isHidden = true
+                shadowMaskedImageView.isHidden = false
+                blurSliderLabel.text = "Blur pixels"
+            }
+        }
+    }
+    let durationDefaultValue: Double = 0.25
+    let blurPercentDefaultValue: Double = 20.0
+    @IBOutlet weak var maskedView: RadialMaskedImageView!
+    @IBOutlet weak var shadowMaskedImageView: ShadowMaskImageView!
+    
+    @IBOutlet weak var animationTypeControl: UISegmentedControl!
+    @IBOutlet weak var blurSliderLabel: UILabel!
     @IBOutlet weak var blurPercentSlider: UISlider!
     @IBOutlet weak var blurPercentTextField: UITextField!
 
@@ -24,7 +49,7 @@ class ViewController: UIViewController {
 
     weak var targetTextField: UITextField? = nil
 
-    var blurPercent: Double = 0.25 {
+    var blurPercent: Double = 20 {
         didSet {
             if blurPercent < Double(blurPercentSlider.minimumValue) {
                 blurPercent = Double(blurPercentSlider.minimumValue)
@@ -32,8 +57,9 @@ class ViewController: UIViewController {
                 blurPercent = Double(blurPercentSlider.maximumValue)
             }
             blurPercentSlider.value = Float(blurPercent)
-            blurPercentTextField.text = String(format: "%.2f", blurPercent)
-            maskedView.blurPercent = blurPercent
+            blurPercentTextField.text = String(format: "%.1f", blurPercent)
+            maskedView.blurPercent = blurPercent / 100.0
+            shadowMaskedImageView.blurRadius = blurPercent
         }
     }
     
@@ -47,10 +73,12 @@ class ViewController: UIViewController {
             durationSlider.value = Float(duration)
             durationTextField.text = String(format: "%.2f", duration)
             maskedView.totalDuration = duration
+            shadowMaskedImageView.totalDuration = duration
         }
     }
 
     override func viewDidLoad() {
+        animationType = .radialAnimation
         super.viewDidLoad()
         blurPercent = blurPercentDefaultValue
         duration = durationDefaultValue
@@ -63,7 +91,7 @@ class ViewController: UIViewController {
 
         durationSlider.isEnabled = enable
         durationTextField.isEnabled = enable
-        stepDelaySwitch.isEnabled = enable
+        stepDelaySwitch.isEnabled = enable && animationType == .radialAnimation
         showImageViewSwitch.isEnabled = enable
 
     }
@@ -83,9 +111,20 @@ class ViewController: UIViewController {
     @IBAction func handleShowImageSwitch(_ sender: UISwitch) {
         let value = sender.isOn
         enableControls(false)
-        maskedView.show(doShow: value) { _ in
-            self.enableControls(true)
+        switch animationType {
+        case .radialAnimation:
+            maskedView.show(value) { _ in
+                self.enableControls(true)
+            }
+        case .shadowAnimation:
+            shadowMaskedImageView.show(value) { _ in
+                self.enableControls(true)
+            }
         }
+    }
+
+    @IBAction func handleAnimationTypeControl(_ sender: UISegmentedControl) {
+        animationType = AnimationTypes(rawValue: sender.selectedSegmentIndex)!
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

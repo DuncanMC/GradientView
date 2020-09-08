@@ -88,7 +88,7 @@
                                     <action selector="handleDurationSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="w1z-dt-llM"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="pBC-qa-b97" userLabel="Blur Radius Slider">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="0.0" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="pBC-qa-b97" userLabel="Blur Radius Slider">
                                 <rect key="frame" x="151" y="660" width="195" height="31"/>
                                 <connections>
                                     <action selector="handleblurPercentSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="YP9-HQ-0N0"/>
@@ -113,6 +113,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="G7z-IQ-DZX"/>
                                 </connections>
                             </textField>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scampers" translatesAutoresizingMaskIntoConstraints="NO" id="BIW-nJ-1RA" customClass="ShadowMaskImageView" customModule="GradientView" customModuleProvider="target">
+                                <rect key="frame" x="57" y="69" width="300" height="300"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cYD-LX-4Z6">
+                                <rect key="frame" x="153" y="609" width="209" height="32"/>
+                                <segments>
+                                    <segment title="Radial Mask"/>
+                                    <segment title="Shadow Mask"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handleAnimationTypeControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="75S-CS-bSQ"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -121,7 +139,9 @@
                             <constraint firstItem="PJg-k0-Uad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="4U8-4r-S2Q"/>
                             <constraint firstItem="pBC-qa-b97" firstAttribute="centerY" secondItem="yAF-Fm-qmV" secondAttribute="centerY" id="629-0N-ndp"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="trailing" secondItem="pBC-qa-b97" secondAttribute="trailing" id="8Qh-h1-C4g"/>
+                            <constraint firstItem="BIW-nJ-1RA" firstAttribute="top" secondItem="gZr-VO-rvd" secondAttribute="top" id="ByF-Kn-Mco"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="top" secondItem="c0u-ET-Ws7" secondAttribute="bottom" constant="20" id="C1O-a5-YFC"/>
+                            <constraint firstItem="pBC-qa-b97" firstAttribute="top" secondItem="cYD-LX-4Z6" secondAttribute="bottom" constant="20" id="ErZ-14-phW"/>
                             <constraint firstItem="c0u-ET-Ws7" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="leading" id="F2L-CE-WfN"/>
                             <constraint firstItem="zea-ip-5KN" firstAttribute="leading" secondItem="yAF-Fm-qmV" secondAttribute="leading" id="F6O-cf-8GF"/>
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="leading" secondItem="pBC-qa-b97" secondAttribute="leading" id="Igo-ai-lOc"/>
@@ -132,13 +152,17 @@
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="leading" secondItem="xRR-p9-8vQ" secondAttribute="leading" id="Qc5-PB-qqd"/>
                             <constraint firstItem="Dbo-EJ-5en" firstAttribute="leading" secondItem="ddM-WB-IH8" secondAttribute="leading" id="RLz-Zn-PxZ"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="leading" secondItem="c0u-ET-Ws7" secondAttribute="leading" id="UHn-rs-sCc"/>
+                            <constraint firstItem="BIW-nJ-1RA" firstAttribute="leading" secondItem="gZr-VO-rvd" secondAttribute="leading" id="UUn-3a-8Nc"/>
                             <constraint firstItem="Dbo-EJ-5en" firstAttribute="trailing" secondItem="ddM-WB-IH8" secondAttribute="trailing" id="UVe-6A-HOE"/>
+                            <constraint firstItem="BIW-nJ-1RA" firstAttribute="trailing" secondItem="gZr-VO-rvd" secondAttribute="trailing" id="V0n-57-5H7"/>
                             <constraint firstItem="PJg-k0-Uad" firstAttribute="leading" secondItem="yAF-Fm-qmV" secondAttribute="leading" id="Vgf-Lb-w3z"/>
+                            <constraint firstItem="pBC-qa-b97" firstAttribute="leading" secondItem="cYD-LX-4Z6" secondAttribute="leading" id="WdG-Nq-ihq"/>
                             <constraint firstItem="ddM-WB-IH8" firstAttribute="centerY" secondItem="pBC-qa-b97" secondAttribute="centerY" id="XRK-Hk-6ND"/>
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="leading" secondItem="PJg-k0-Uad" secondAttribute="trailing" constant="10" id="ZMW-Kb-9bG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BWB-Xu-GRC" secondAttribute="bottom" constant="20" id="bCm-3V-2tR"/>
                             <constraint firstItem="zea-ip-5KN" firstAttribute="top" secondItem="yAF-Fm-qmV" secondAttribute="bottom" constant="20" id="bdz-4i-S8X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ddM-WB-IH8" secondAttribute="trailing" constant="10" id="hNW-n2-tQI"/>
+                            <constraint firstItem="BIW-nJ-1RA" firstAttribute="bottom" secondItem="gZr-VO-rvd" secondAttribute="bottom" id="jYw-RR-ypA"/>
                             <constraint firstItem="Rff-Sf-vg2" firstAttribute="leading" secondItem="yAF-Fm-qmV" secondAttribute="leading" id="jmR-hB-QIN"/>
                             <constraint firstItem="BWB-Xu-GRC" firstAttribute="top" secondItem="xRR-p9-8vQ" secondAttribute="bottom" constant="20" id="jrj-wA-5Ud"/>
                             <constraint firstItem="xRR-p9-8vQ" firstAttribute="centerY" secondItem="Rff-Sf-vg2" secondAttribute="centerY" id="krm-3q-7d9"/>
@@ -150,11 +174,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="animationTypeControl" destination="cYD-LX-4Z6" id="WRC-9c-VfO"/>
                         <outlet property="blurPercentSlider" destination="pBC-qa-b97" id="4VK-wW-UVB"/>
                         <outlet property="blurPercentTextField" destination="ddM-WB-IH8" id="pZz-02-37R"/>
+                        <outlet property="blurSliderLabel" destination="yAF-Fm-qmV" id="ubJ-vn-goO"/>
                         <outlet property="durationSlider" destination="c0u-ET-Ws7" id="hBX-e7-Qkr"/>
                         <outlet property="durationTextField" destination="Dbo-EJ-5en" id="8bJ-gc-Ccs"/>
                         <outlet property="maskedView" destination="gZr-VO-rvd" id="a6a-Vm-sY1"/>
+                        <outlet property="shadowMaskedImageView" destination="BIW-nJ-1RA" id="H7d-av-I2m"/>
                         <outlet property="showImageViewSwitch" destination="BWB-Xu-GRC" id="bWv-PK-ph5"/>
                         <outlet property="stepDelaySwitch" destination="xRR-p9-8vQ" id="MWZ-14-O5R"/>
                     </connections>

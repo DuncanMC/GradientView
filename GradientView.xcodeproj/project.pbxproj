@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0E02F32507D57200DAADE7 /* ShadowMaskImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E02F22507D57200DAADE7 /* ShadowMaskImageView.swift */; };
 		AE89371725014C4000EBE758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89371625014C4000EBE758 /* AppDelegate.swift */; };
 		AE89371B25014C4000EBE758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89371A25014C4000EBE758 /* ViewController.swift */; };
 		AE89371E25014C4000EBE758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE89371C25014C4000EBE758 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE0E02F22507D57200DAADE7 /* ShadowMaskImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowMaskImageView.swift; sourceTree = "<group>"; };
 		AE89371325014C4000EBE758 /* GradientView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE89371625014C4000EBE758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE89371A25014C4000EBE758 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				AE89371625014C4000EBE758 /* AppDelegate.swift */,
 				AE89372A25014C6300EBE758 /* GradientView.swift */,
 				AE89372E250175DA00EBE758 /* UIViewController+CAAnimationDelegate.swift */,
+				AE0E02F22507D57200DAADE7 /* ShadowMaskImageView.swift */,
 				AE89372C25015C4D00EBE758 /* RadialMaskedImageView.swift */,
 				AE89371A25014C4000EBE758 /* ViewController.swift */,
 				AE89371C25014C4000EBE758 /* Main.storyboard */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE0E02F32507D57200DAADE7 /* ShadowMaskImageView.swift in Sources */,
 				AE89371B25014C4000EBE758 /* ViewController.swift in Sources */,
 				AE89371725014C4000EBE758 /* AppDelegate.swift in Sources */,
 				AE89372F250175DA00EBE758 /* UIViewController+CAAnimationDelegate.swift in Sources */,
